@@ -1,5 +1,6 @@
+#!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { greetingYou, check } from './logic.js';
+import { greetingYou, check, result} from './logic.js';
 let user = greetingYou();
 console.log('What is the result of expression?');
 
@@ -8,8 +9,7 @@ let CorrectCalc = (operator, num1, num2) => {
    let correctAnswer = num1 + num2;
   if (operator === 1) correctAnswer = num1 - num2;
   if (operator === 2) correctAnswer = num1 * num2;
-  console.log(correctAnswer)
-  return correctAnswer
+    return correctAnswer
 }
 
 
@@ -30,9 +30,5 @@ let calculate = () => {
   return i
   }
 
-let result = () => {
-  let yourResult = calculate()
-  if (yourResult == 3) return console.log(`Congratulations, ${user}!`);
- else return console.log(`Let's try again, ${user}!`)
-  }
-result()
+let yourResult = calculate();
+result(yourResult, user)

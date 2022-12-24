@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { greetingYou, check } from './logic.js'
+import { greetingYou, check, result } from './logic.js'
 
 let user = greetingYou();
 
@@ -21,10 +21,6 @@ console.log(`Question: ${randomNum}`)
   return i
   };
 
-let result = () => {
-  let yourResult = isEven()
-  if (yourResult == 3) return console.log(`Congratulations, ${user}!`);
- else return console.log(`Let's try again, ${user}!`)
-  }
-result()
+let yourResult = isEven()
+result(yourResult, user) 
 

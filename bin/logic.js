@@ -17,9 +17,11 @@ import readlineSync from 'readline-sync';
     return false
   }
 }
-
-  
- export {greetingYou, check}
+let result = (yourResult, user) => {
+  if (yourResult == 3) return console.log(`Congratulations, ${user}!`);
+ else return console.log(`Let's try again, ${user}!`)
+  }
+ export {greetingYou, check, result}
 
 
 
