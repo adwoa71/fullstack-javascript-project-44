@@ -1,34 +1,30 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
+import { greetingYou, check } from './logic.js'
 
-let greetingYou = () => {
-  let userName = readlineSync.question('May I have your name? ');
-  console.log('Hi ' + userName + '!');
-  return userName
-};
-
-console.log('Welcome to the Brain Games!')
 let user = greetingYou();
-console.log('Answer "yes" if the number is even, otherwise answer "no".')
+
 
 const isEven = () => {
-  for (let i = 1; i <= 3;) {
+  console.log('Answer "yes" if the number is even, otherwise answer "no".')
+  let i = 0;
+  while (i <=2 ){
     let randomNum = parseInt(Math.random() * 100)
 let correctAnswer = 'yes'
 if (!(randomNum % 2) == 0) correctAnswer = 'no'
 console.log(`Question: ${randomNum}`)
     let answer = readlineSync.question('Your answer: ');
-  if (correctAnswer == answer) {
-    console.log('Correct!');
-    i += 1;
+  let result = check(answer, correctAnswer)
+    if (result === false)  i = 4 ;
+    if (result === true) { i = i + 1 }
   }
-   else {
-     console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}`)
-    console.log(`Let's try again, ${user}!`)
-    i = 5;
-    }
-       if (i === 4) console.log(`Congratulations, ${user}!`)
-     }
+  return i
   };
 
-isEven(); 
+let result = () => {
+  let yourResult = isEven()
+  if (yourResult == 3) return console.log(`Congratulations, ${user}!`);
+ else return console.log(`Let's try again, ${user}!`)
+  }
+result()
+
