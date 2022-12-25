@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { greetingYou, check, result} from './logic.js';
+import { greetingYou, check, result} from '../src/index.js';
 let user = greetingYou();
 console.log('What number is missing in the progression?')
 
@@ -14,8 +14,9 @@ let progressionBild = (startNumber, length, step, missingPosition) => {
 }
 
 let progressionGame = () => {
+  let isTrue = true;
   let i = 0
-  while (i <= 2) {
+  while (i <=2 && isTrue){
     let Num1 = parseInt(Math.random() * 100);
     let Num2 = parseInt(Math.random() * 10 + 5);
     let Num3 = parseInt(Math.random() * 10);
@@ -23,9 +24,9 @@ let progressionGame = () => {
     let correctAnswer = Num1 + Num3 * Num4
     console.log(`Question: ${progressionBild(Num1, Num2, Num3, Num4)}`);
     let answer = readlineSync.question('Your answer: ')
-    let result = check(answer, correctAnswer)
-    if (result === false)  i = 4 ;
-    if (result === true) { i = i + 1 }
+    isTrue = check(answer, correctAnswer)
+    if (isTrue) { i = i + 1 }
+    else {i = 4}
   }
   return i
 }

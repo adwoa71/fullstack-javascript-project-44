@@ -7,8 +7,8 @@ import readlineSync from 'readline-sync';
   return userName
 };
 
- let check = (answer, correctAnswer) => {
-    if (answer == correctAnswer) {
+let check = (answer, correctAnswer) => {
+  if (answer == correctAnswer) {
     console.log('Correct!')
     return true
   }
@@ -17,11 +17,28 @@ import readlineSync from 'readline-sync';
     return false
   }
 }
+let i = 0
+let iter = (isTrue) => {
+  console.log(isTrue)
+  
+  if (!isTrue) { console.log(i); return i = 4 }
+  else {
+    while (i <= 2) {
+      { i = i + 1; console.log(i); return i }
+            
+    }
+  }
+}
+
+
+   
+  
 let result = (yourResult, user) => {
   if (yourResult == 3) return console.log(`Congratulations, ${user}!`);
  else return console.log(`Let's try again, ${user}!`)
-  }
- export {greetingYou, check, result}
+   }
+
+    export {greetingYou, check, iter, result}
 
 
 

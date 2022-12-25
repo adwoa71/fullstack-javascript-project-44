@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-import { greetingYou, check, result} from './logic.js';
+import { greetingYou, check, iter, result} from '../src/index.js';
 let user = greetingYou();
 console.log('What is the result of expression?');
 
@@ -14,8 +14,9 @@ let CorrectCalc = (operator, num1, num2) => {
 
 
 let calculate = () => {
-  let i =0
-  while (i <= 2) {
+   let isTrue = true;
+  let i = 0
+  while (i <=2 && isTrue){
     let operation = ['+', '-', '*']
     let randomOperator = parseInt(Math.random() * 3)
     let Num1 = parseInt(Math.random() * 10);
@@ -23,12 +24,10 @@ let calculate = () => {
     let correctAnswer = CorrectCalc(randomOperator, Num1, Num2)
     console.log(`Question: ${Num1} ${operation[randomOperator]} ${Num2}`);
     let answer = readlineSync.question('Your answer: ')
-    let result = check(answer, correctAnswer)
-    if (result === false)  i = 4 ;
-    if (result === true) { i = i + 1 }
-  }
+  isTrue = check(answer, correctAnswer)
+      if (isTrue) { i = i + 1 }
+      }
   return i
-  }
-
-let yourResult = calculate();
+}
+  let yourResult = calculate();
 result(yourResult, user)
