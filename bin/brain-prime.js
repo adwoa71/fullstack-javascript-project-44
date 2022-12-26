@@ -9,7 +9,7 @@ let isPrime = (a) => {
   if ((a % 2) == 0) return "no"
   let b = 3;
   while ((a > b)) {
-    if((a % b) == 0 ) return 'yes';
+    if((a % b) == 0 ) return 'no';
     else b = b + 2
   }
   return 'no'
@@ -20,7 +20,6 @@ let isPrimeGame = () => {
   while (i <=2 && isTrue){
     let Num1 = parseInt(Math.random() * 100);
     let correctAnswer = isPrime(Num1)
-    console.log(correctAnswer);
     console.log(`Question: ${Num1}`);
     let answer = readlineSync.question('Your answer: ')
     isTrue = check(answer, correctAnswer)
